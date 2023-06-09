@@ -11,14 +11,27 @@ import HelloWorld from './components/HelloWorld.vue'
       <HelloWorld msg="You did it!" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/">Nothing</RouterLink>
+        <RouterLink to="/0">Page 0</RouterLink>
+        <RouterLink to="/1">Page 1</RouterLink>
+        <RouterLink to="/2">Page 2</RouterLink>
+        <!-- <RouterLink to="/about">About</RouterLink> -->
       </nav>
     </div>
   </header>
-  <Suspense>
-    <RouterView />
-  </Suspense>
+  <RouterView v-slot="{ Component }"> 
+    <!-- https://vuejs.org/guide/built-ins/suspense.html#combining-with-other-components -->
+    <template v-if="Component">
+      <KeepAlive>
+        <Suspense>
+          <component :is="Component"></component>
+          <template #fallback>
+            Loading...
+          </template>
+        </Suspense>
+      </KeepAlive>
+    </template>
+  </RouterView>
 </template>
 
 <style scoped>

@@ -1,9 +1,9 @@
 <script setup>
-import { useRouter } from 'vue-router'
+// import { useRouter } from 'vue-router'
 
-const router = useRouter()
+// const router = useRouter()
 
-await router.push({ query: { 'test': 'abc' } })
+// await router.push({ query: { 'test': 'abc' } })
 
 </script>
 
